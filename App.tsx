@@ -1,20 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 import RNBootSplash from 'react-native-bootsplash'
-import { Onboarding, Welcome } from './src/Authentication'
+import { AuthenticationNavigator } from './src/Authentication'
 import { ThemeProvider } from '@shopify/restyle'
 import { theme } from './src/components'
-import { Routes } from './src/components/Navigation'
-
-const AuthenticationStack = createStackNavigator<Routes>()
-
-const AuthenticationNavigator: React.FC = () => (
-  <AuthenticationStack.Navigator headerMode='none'>
-    <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
-    <AuthenticationStack.Screen name='Welcome' component={Welcome} />
-  </AuthenticationStack.Navigator>
-)
 
 const App: React.FC = () => {
   useEffect(() => {
