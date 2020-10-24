@@ -1,9 +1,4 @@
-import {
-  createTheme,
-  createText,
-  BaseTheme,
-  VariantProps,
-} from '@shopify/restyle'
+import { createTheme, createText } from '@shopify/restyle'
 
 const palette = {
   purpleLight: '#8C6FF7',
@@ -20,12 +15,12 @@ const palette = {
   textSecondaryColor: 'rgba(12, 13, 52, 0.7)',
 }
 
-const theme: BaseTheme = createTheme({
+const theme = createTheme({
   colors: {
     primary: '#2cb9b0',
     title: '#0c0d34',
     text: 'rgba(12, 13, 52, 0.7)',
-    body: 'rgba(12, 13, 52, 0.05)',
+    grey: 'rgba(12, 13, 52, 0.05)',
     white: 'white',
   },
   spacing: {
@@ -40,9 +35,9 @@ const theme: BaseTheme = createTheme({
   },
   textVariants: {
     hero: {
-      fontSize: 75,
+      fontSize: 80,
       lineHeight: 80,
-      fontFamily: 'SFProText-Bold',
+      fontFamily: 'SFProDisplay-Bold',
       color: 'white',
     },
     title1: {
@@ -52,15 +47,20 @@ const theme: BaseTheme = createTheme({
     },
     title2: {
       fontSize: 24,
-      fontFamily: 'SFProText-Semibold',
+      fontFamily: 'SFProDisplay-Medium',
       color: 'title',
       lineHeight: 30,
     },
     body: {
       fontSize: 16,
-      fontFamily: 'SFProText-Regular',
+      fontFamily: 'SFProDisplay-Regular',
       color: 'text',
       lineHeight: 24,
+    },
+    button: {
+      fontSize: 15,
+      fontFamily: 'SFProDisplay-Medium',
+      color: 'text',
     },
   },
 })
