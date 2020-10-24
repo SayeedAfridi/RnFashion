@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 import RNBootSplash from 'react-native-bootsplash'
 import { Onboarding, Welcome } from './src/Authentication'
+import { ThemeProvider } from '@shopify/restyle'
+import { theme } from './src/components'
 
 const AuthenticationStack = createStackNavigator()
 
@@ -19,9 +21,11 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <NavigationContainer>
-      <AuthenticationNavigator />
-    </NavigationContainer>
+    <ThemeProvider {...{ theme }}>
+      <NavigationContainer>
+        <AuthenticationNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   )
 }
 
