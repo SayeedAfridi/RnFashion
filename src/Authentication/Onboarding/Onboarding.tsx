@@ -11,6 +11,7 @@ import Animated, {
 import SubSlide from './SubSlide'
 import Dot from './Dot'
 import { theme } from '../../components'
+import { Routes, StackNavigationProps } from '../../components/Navigation'
 
 const BORDER_RADIUS = theme.borderRadii.xl
 const { width } = Dimensions.get('window')
@@ -66,7 +67,9 @@ const slides = [
   },
 ]
 
-const Onboarding: React.FC = () => {
+const Onboarding: React.FC = ({
+  navigation,
+}: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scrl = useRef<Animated.ScrollView>(null)
   const { scrollHandler, x } = useScrollHandler()
   const backgroundColor = interpolateColor(x, {
@@ -133,20 +136,24 @@ const Onboarding: React.FC = () => {
                 marginTop: 10,
                 transform: [{ translateX: multiply(x, -1) }],
               }}>
-              {slides.map(({ subTitle, description }, i) => (
-                <SubSlide
-                  key={i}
-                  {...{ subTitle, description }}
-                  last={slides.length - 1 === i}
-                  onPress={() => {
-                    if (scrl.current) {
-                      scrl.current
-                        .getNode()
-                        .scrollTo({ x: width * (i + 1), animated: true })
-                    }
-                  }}
-                />
-              ))}
+              {slides.map(({ subTitle, description }, i) => {
+                const last = slides.length - 1 === i
+                return (
+                  <SubSlide
+                    key={i}
+                    {...{ subTitle, description, last }}
+                    onPress={() => {
+                      if (last) {
+                        navigation.navigate('Welcome')
+                      } else {
+                        scrl.current
+                          ?.getNode()
+                          .scrollTo({ x: width * (i + 1), animated: true })
+                      }
+                    }}
+                  />
+                )
+              })}
             </Animated.View>
           </View>
         </Animated.View>

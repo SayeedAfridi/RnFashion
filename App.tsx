@@ -5,8 +5,9 @@ import RNBootSplash from 'react-native-bootsplash'
 import { Onboarding, Welcome } from './src/Authentication'
 import { ThemeProvider } from '@shopify/restyle'
 import { theme } from './src/components'
+import { Routes } from './src/components/Navigation'
 
-const AuthenticationStack = createStackNavigator()
+const AuthenticationStack = createStackNavigator<Routes>()
 
 const AuthenticationNavigator: React.FC = () => (
   <AuthenticationStack.Navigator headerMode='none'>
