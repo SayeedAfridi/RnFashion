@@ -1,4 +1,4 @@
-package com.sayeed.imgfy;
+package com.sayeed.rnfashion;
 
 import android.app.Application;
 import android.content.Context;

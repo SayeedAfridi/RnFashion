@@ -1,4 +1,4 @@
-package com.sayeed.imgfy;
+package com.sayeed.rnfashion;
 
 import com.facebook.react.ReactActivity;
 import com.zoontek.rnbootsplash.RNBootSplash;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
 
   @Override
   protected String getMainComponentName() {
-    return "ImgFy";
+    return "RnFashion";
   }
 
   @Override

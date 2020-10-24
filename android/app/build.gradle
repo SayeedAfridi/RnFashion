@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.sayeed.imgfy"
+        applicationId "com.sayeed.rnfashion"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
