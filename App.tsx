@@ -1,34 +1,27 @@
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
-import { StyleSheet, View, Text, StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
+import Onboarding from './src/Authentication/Onboarding'
 
-export interface Props {
-  isLoaded: boolean
-}
+const AuthenticationStack = createStackNavigator()
 
-const App: React.FC<Props> = ({ isLoaded = true }) => {
+const AuthenticationNavigator: React.FC = () => (
+  <AuthenticationStack.Navigator headerMode='nones'>
+    <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
+  </AuthenticationStack.Navigator>
+)
+
+const App: React.FC = () => {
   useEffect(() => {
     RNBootSplash.hide()
   }, [])
 
-  if (!isLoaded) {
-    return null
-  }
-
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle='light-content' />
-      <Text>Start editing App.js</Text>
-    </View>
+    <NavigationContainer>
+      <AuthenticationNavigator />
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
 
 export default App
