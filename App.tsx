@@ -2,10 +2,19 @@ import React, { useEffect } from 'react'
 import { StyleSheet, View, Text, StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 
-const App = () => {
+export interface Props {
+  isLoaded: boolean
+}
+
+const App: React.FC<Props> = ({ isLoaded = true }) => {
   useEffect(() => {
     RNBootSplash.hide()
   }, [])
+
+  if (!isLoaded) {
+    return null
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle='light-content' />
