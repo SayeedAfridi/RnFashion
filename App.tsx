@@ -7,7 +7,7 @@ import Onboarding from './src/Authentication/Onboarding'
 const AuthenticationStack = createStackNavigator()
 
 const AuthenticationNavigator: React.FC = () => (
-  <AuthenticationStack.Navigator headerMode='nones'>
+  <AuthenticationStack.Navigator headerMode='none'>
     <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
   </AuthenticationStack.Navigator>
 )
