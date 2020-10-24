@@ -4,6 +4,7 @@ import RNBootSplash from 'react-native-bootsplash'
 import { AuthenticationNavigator } from './src/Authentication'
 import { ThemeProvider } from '@shopify/restyle'
 import { theme } from './src/components'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -12,9 +13,11 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider {...{ theme }}>
-      <NavigationContainer>
-        <AuthenticationNavigator />
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <AuthenticationNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </ThemeProvider>
   )
 }
