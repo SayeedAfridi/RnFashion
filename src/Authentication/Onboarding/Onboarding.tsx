@@ -1,8 +1,13 @@
 import React, { useRef } from 'react'
-import { View, StyleSheet, Dimensions } from 'react-native'
+import { View, StyleSheet, Dimensions, Image } from 'react-native'
 import { useScrollHandler, interpolateColor } from 'react-native-redash'
 import Slide, { SLIDER_HEIGHT, BORDER_RADIUS } from './Slide'
-import Animated, { divide, multiply } from 'react-native-reanimated'
+import Animated, {
+  divide,
+  Extrapolate,
+  interpolate,
+  multiply,
+} from 'react-native-reanimated'
 import SubSlide from './SubSlide'
 import Dot from './Dot'
 
@@ -15,7 +20,11 @@ const slides = [
     subTitle: 'Lorem ipsum, dolor sit',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat facilis ',
-    image: require('../../assets/images/1.png'),
+    image: {
+      src: require('../../assets/images/1.png'),
+      width: 418,
+      height: 597,
+    },
   },
   {
     title: 'Playfull',
@@ -23,7 +32,11 @@ const slides = [
     subTitle: 'Lorem ipsum, dolor sit',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat facilis ',
-    image: require('../../assets/images/2.png'),
+    image: {
+      src: require('../../assets/images/2.png'),
+      width: 408,
+      height: 612,
+    },
   },
   {
     title: 'Eccentric',
@@ -31,7 +44,11 @@ const slides = [
     subTitle: 'Lorem ipsum, dolor sit',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat facilis ',
-    image: require('../../assets/images/3.png'),
+    image: {
+      src: require('../../assets/images/3.png'),
+      width: 433,
+      height: 577,
+    },
   },
   {
     title: 'Funky',
@@ -39,7 +56,11 @@ const slides = [
     subTitle: 'Lorem ipsum, dolor sit',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat facilis ',
-    image: require('../../assets/images/4.png'),
+    image: {
+      src: require('../../assets/images/4.png'),
+      width: 408,
+      height: 612,
+    },
   },
 ]
 
@@ -54,6 +75,25 @@ const Onboarding: React.FC = () => {
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, { backgroundColor }]}>
+        {slides.map(({ image }, i) => {
+          const opacity = interpolate(x, {
+            inputRange: [(i - 0.5) * width, i * width, (i + 0.5) * width],
+            outputRange: [0, 1, 0],
+            extrapolate: Extrapolate.CLAMP,
+          })
+          return (
+            <Animated.View key={i} style={[styles.underlay, { opacity }]}>
+              <Image
+                source={image.src}
+                style={{
+                  width: width - BORDER_RADIUS,
+                  height:
+                    ((width - BORDER_RADIUS) * image.height) / image.width,
+                }}
+              />
+            </Animated.View>
+          )
+        })}
         <Animated.ScrollView
           ref={scrl}
           horizontal
@@ -63,12 +103,7 @@ const Onboarding: React.FC = () => {
           bounces={false}
           {...scrollHandler}>
           {slides.map((s, i) => (
-            <Slide
-              key={i}
-              image={s.image}
-              label={s.title}
-              right={i % 2 !== 0}
-            />
+            <Slide key={i} label={s.title} right={i % 2 !== 0} />
           ))}
         </Animated.ScrollView>
       </Animated.View>
@@ -142,6 +177,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: 'transparent',
+  },
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    borderBottomRightRadius: BORDER_RADIUS,
+    overflow: 'hidden',
   },
 })
 
