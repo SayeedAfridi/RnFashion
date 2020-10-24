@@ -1,4 +1,4 @@
-import { createTheme, createText } from '@shopify/restyle'
+import { createTheme, createText, createBox } from '@shopify/restyle'
 
 const palette = {
   purpleLight: '#8C6FF7',
@@ -32,6 +32,12 @@ const theme = createTheme({
   breakpoints: {
     phone: 0,
     tablet: 768,
+  },
+  borderRadii: {
+    s: 4,
+    m: 10,
+    l: 25,
+    xl: 75,
   },
   textVariants: {
     hero: {
@@ -68,5 +74,6 @@ const theme = createTheme({
 export type Theme = typeof theme
 
 export const Text = createText<Theme>()
+export const Box = createBox<Theme>()
 
 export default theme

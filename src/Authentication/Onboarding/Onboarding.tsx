@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { View, StyleSheet, Dimensions, Image } from 'react-native'
 import { useScrollHandler, interpolateColor } from 'react-native-redash'
-import Slide, { SLIDER_HEIGHT, BORDER_RADIUS } from './Slide'
+import Slide, { SLIDER_HEIGHT } from './Slide'
 import Animated, {
   divide,
   Extrapolate,
@@ -10,7 +10,9 @@ import Animated, {
 } from 'react-native-reanimated'
 import SubSlide from './SubSlide'
 import Dot from './Dot'
+import { theme } from '../../components'
 
+const BORDER_RADIUS = theme.borderRadii.xl
 const { width } = Dimensions.get('window')
 
 const slides = [
