@@ -12,9 +12,7 @@ const image = {
   height: 575,
 }
 
-const Welcome: React.FC = ({
-  navigation,
-}: StackNavigationProps<Routes, 'Welcome'>) => {
+const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
   return (
     <Box flex={1} backgroundColor='white'>
       <Box

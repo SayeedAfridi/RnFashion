@@ -28,7 +28,8 @@
     "node_modules",
     "babel.config.js",
     "metro.config.js",
-    "jest.config.js"
+    "jest.config.js",
+    "react-native.config.js"
   ],
-  "include": ["node_modules/react-native-redash/lib/typescript/v1/index.d.ts"]
+  "include": ["./index.ts"]
 }

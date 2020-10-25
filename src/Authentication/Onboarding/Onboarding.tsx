@@ -67,7 +67,7 @@ const slides = [
   },
 ]
 
-const Onboarding: React.FC = ({
+const Onboarding = ({
   navigation,
 }: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scrl = useRef<Animated.ScrollView>(null)

@@ -7,7 +7,7 @@ import { Theme, Text } from '../../components/theme'
 interface ButtonProps {
   variant: 'default' | 'primary' | 'transparent'
   label?: String
-  onPress: () => void
+  onPress?: () => void
   children?: ReactNode
 }
 
