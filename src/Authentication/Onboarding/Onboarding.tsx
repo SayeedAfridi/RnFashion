@@ -10,8 +10,8 @@ import Animated, {
 } from 'react-native-reanimated'
 import SubSlide from './SubSlide'
 import Dot from './Dot'
-import { useTheme } from '../../components'
 import { Routes, StackNavigationProps } from '../../components/Navigation'
+import { Theme, useTheme, makeStyles } from '../../components/theme'
 
 const { width } = Dimensions.get('window')
 
@@ -70,21 +70,16 @@ const Onboarding = ({
   navigation,
 }: StackNavigationProps<Routes, 'Onboarding'>) => {
   const theme = useTheme()
-  const BORDER_RADIUS = theme.borderRadii.xl
+  const styles = useStyles()
   const scrl = useRef<Animated.ScrollView>(null)
   const { scrollHandler, x } = useScrollHandler()
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
     outputRange: slides.map(({ color }) => color),
   })
-
   return (
     <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.slider,
-          { backgroundColor, borderBottomRightRadius: BORDER_RADIUS },
-        ]}>
+      <Animated.View style={[styles.slider, { backgroundColor }]}>
         {slides.map(({ image }, i) => {
           const opacity = interpolate(x, {
             inputRange: [(i - 0.5) * width, i * width, (i + 0.5) * width],
@@ -92,18 +87,14 @@ const Onboarding = ({
             extrapolate: Extrapolate.CLAMP,
           })
           return (
-            <Animated.View
-              key={i}
-              style={[
-                styles.underlay,
-                { opacity, borderBottomRightRadius: BORDER_RADIUS },
-              ]}>
+            <Animated.View key={i} style={[styles.underlay, { opacity }]}>
               <Image
                 source={image.src}
                 style={{
-                  width: width - BORDER_RADIUS,
+                  width: width - theme.borderRadii.xl,
                   height:
-                    ((width - BORDER_RADIUS) * image.height) / image.width,
+                    ((width - theme.borderRadii.xl) * image.height) /
+                    image.width,
                 }}
               />
             </Animated.View>
@@ -128,12 +119,8 @@ const Onboarding = ({
             ...StyleSheet.absoluteFillObject,
             backgroundColor: backgroundColor,
           }}>
-          <View
-            style={[
-              styles.footerContent,
-              { borderTopLeftRadius: BORDER_RADIUS },
-            ]}>
-            <View style={[styles.pagination, { height: BORDER_RADIUS - 25 }]}>
+          <View style={styles.footerContent}>
+            <View style={styles.pagination}>
               {slides.map((_, index) => (
                 <Dot
                   key={index}
@@ -176,13 +163,14 @@ const Onboarding = ({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     flex: 1,
     backgroundColor: 'white',
   },
   slider: {
     height: SLIDER_HEIGHT,
+    borderBottomRightRadius: theme.borderRadii.xl,
   },
   footer: {
     flex: 1,
@@ -190,9 +178,11 @@ const styles = StyleSheet.create({
   footerContent: {
     flex: 1,
     backgroundColor: 'white',
+    borderTopLeftRadius: theme.borderRadii.xl,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
+    height: theme.borderRadii.xl - 25,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -202,8 +192,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    borderBottomRightRadius: theme.borderRadii.xl,
     overflow: 'hidden',
   },
-})
+}))
 
 export default Onboarding
