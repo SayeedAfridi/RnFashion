@@ -1,4 +1,9 @@
-import { createTheme, createText, createBox } from '@shopify/restyle'
+import {
+  createTheme,
+  createText,
+  createBox,
+  useTheme as useReTheme,
+} from '@shopify/restyle'
 
 const theme = createTheme({
   colors: {
@@ -65,5 +70,6 @@ export type Theme = typeof theme
 
 export const Text = createText<Theme>()
 export const Box = createBox<Theme>()
+export const useTheme = () => useReTheme<Theme>()
 
 export default theme

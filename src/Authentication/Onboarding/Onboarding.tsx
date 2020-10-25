@@ -10,10 +10,9 @@ import Animated, {
 } from 'react-native-reanimated'
 import SubSlide from './SubSlide'
 import Dot from './Dot'
-import { theme } from '../../components'
+import { useTheme } from '../../components'
 import { Routes, StackNavigationProps } from '../../components/Navigation'
 
-const BORDER_RADIUS = theme.borderRadii.xl
 const { width } = Dimensions.get('window')
 
 const slides = [
@@ -70,6 +69,8 @@ const slides = [
 const Onboarding = ({
   navigation,
 }: StackNavigationProps<Routes, 'Onboarding'>) => {
+  const theme = useTheme()
+  const BORDER_RADIUS = theme.borderRadii.xl
   const scrl = useRef<Animated.ScrollView>(null)
   const { scrollHandler, x } = useScrollHandler()
   const backgroundColor = interpolateColor(x, {
@@ -79,7 +80,11 @@ const Onboarding = ({
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.slider, { backgroundColor }]}>
+      <Animated.View
+        style={[
+          styles.slider,
+          { backgroundColor, borderBottomRightRadius: BORDER_RADIUS },
+        ]}>
         {slides.map(({ image }, i) => {
           const opacity = interpolate(x, {
             inputRange: [(i - 0.5) * width, i * width, (i + 0.5) * width],
@@ -87,7 +92,12 @@ const Onboarding = ({
             extrapolate: Extrapolate.CLAMP,
           })
           return (
-            <Animated.View key={i} style={[styles.underlay, { opacity }]}>
+            <Animated.View
+              key={i}
+              style={[
+                styles.underlay,
+                { opacity, borderBottomRightRadius: BORDER_RADIUS },
+              ]}>
               <Image
                 source={image.src}
                 style={{
@@ -118,8 +128,12 @@ const Onboarding = ({
             ...StyleSheet.absoluteFillObject,
             backgroundColor: backgroundColor,
           }}>
-          <View style={styles.footerContent}>
-            <View style={styles.pagination}>
+          <View
+            style={[
+              styles.footerContent,
+              { borderTopLeftRadius: BORDER_RADIUS },
+            ]}>
+            <View style={[styles.pagination, { height: BORDER_RADIUS - 25 }]}>
               {slides.map((_, index) => (
                 <Dot
                   key={index}
@@ -169,7 +183,6 @@ const styles = StyleSheet.create({
   },
   slider: {
     height: SLIDER_HEIGHT,
-    borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
     flex: 1,
@@ -177,11 +190,9 @@ const styles = StyleSheet.create({
   footerContent: {
     flex: 1,
     backgroundColor: 'white',
-    borderTopLeftRadius: BORDER_RADIUS,
   },
   pagination: {
     ...StyleSheet.absoluteFillObject,
-    height: BORDER_RADIUS - 25,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -191,7 +202,6 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    borderBottomRightRadius: BORDER_RADIUS,
     overflow: 'hidden',
   },
 })

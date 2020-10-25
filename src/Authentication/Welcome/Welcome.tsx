@@ -1,9 +1,8 @@
 import React from 'react'
-import { Box, theme, Text, Button } from '../../components'
+import { Box, useTheme, Text, Button } from '../../components'
 import { Image, Dimensions } from 'react-native'
 import { Routes, StackNavigationProps } from '../../components/Navigation'
 
-const BORDER_RADIUS = theme.borderRadii.xl
 const { width } = Dimensions.get('window')
 
 const image = {
@@ -13,6 +12,8 @@ const image = {
 }
 
 const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
+  const theme = useTheme()
+  const BORDER_RADIUS = theme.borderRadii.xl
   return (
     <Box flex={1} backgroundColor='white'>
       <Box

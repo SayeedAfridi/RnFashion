@@ -1,7 +1,8 @@
 import React from 'react'
-import theme, { Box, Text } from '../theme'
+import { Box, Text } from '../theme'
 import Icon from 'react-native-vector-icons/Feather'
 import { RectButton } from 'react-native-gesture-handler'
+import { useTheme } from '@shopify/restyle'
 
 interface CheckboxProps {
   label: string
@@ -14,6 +15,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   onChange,
 }: CheckboxProps) => {
+  const theme = useTheme()
   return (
     <RectButton activeOpacity={0} onPress={() => onChange(!checked)}>
       <Box flexDirection='row' alignItems='center'>

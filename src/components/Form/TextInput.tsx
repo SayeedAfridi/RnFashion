@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TextInputProps as RnTextInputProps,
 } from 'react-native'
-import theme, { Box } from '../theme'
+import { Box, useTheme } from '../theme'
 import Icon from 'react-native-vector-icons/Feather'
 
 interface TextInputProps extends RnTextInputProps {
@@ -20,6 +20,8 @@ const TextInput: React.FC<TextInputProps> = ({
   touched,
   ...props
 }: TextInputProps) => {
+  const theme = useTheme()
+  theme
   const reColor: keyof typeof theme.colors = !touched
     ? 'darkGrey'
     : !error
