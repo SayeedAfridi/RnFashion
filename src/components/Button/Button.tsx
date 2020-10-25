@@ -8,7 +8,7 @@ interface ButtonProps {
   variant: 'default' | 'primary' | 'transparent'
   label?: String
   onPress: () => void
-  children: ReactNode
+  children?: ReactNode
 }
 
 const Button: React.FC<ButtonProps> = ({
