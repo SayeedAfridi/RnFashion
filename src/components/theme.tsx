@@ -5,9 +5,11 @@ const theme = createTheme({
     primary: '#2cb9b0',
     secondary: '#0c0d34',
     text: 'rgba(12, 13, 52, 0.7)',
+    darkGrey: '#8a8d90',
     grey: 'rgba(12, 13, 52, 0.05)',
     white: 'white',
     lightGrey: '#f4f0ef',
+    danger: '#ff0058',
   },
   spacing: {
     s: 8,
