@@ -6,11 +6,13 @@ import {
   Box,
   TextInput,
   Checkbox,
-} from '../../components'
+} from '../components'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import Footer from '../components/Footer'
-import { TextInputRef } from '../../components/Form/TextInput'
+import Footer from './components/Footer'
+import { TextInputRef } from '../components/Form/TextInput'
+import { Routes, StackNavigationProps } from '../components/Navigation'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -19,7 +21,7 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 })
 
-const Login = () => {
+const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
   const password = useRef<TextInputRef>(null)
   const {
     handleChange,
@@ -38,7 +40,7 @@ const Login = () => {
     <Footer
       title="Don't have account?"
       action='Sign up here.'
-      onPress={() => {}}
+      onPress={() => navigation.navigate('Signup')}
     />
   )
   return (
@@ -91,9 +93,12 @@ const Login = () => {
             onChange={(v) => setFieldValue('remember', v)}
             label='Remember me'
           />
-          <Text color='primary' variant='button'>
-            Forgot Password
-          </Text>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('ForgotPassword')}>
+            <Text color='primary' variant='button'>
+              Forgot Password
+            </Text>
+          </TouchableWithoutFeedback>
         </Box>
         <Button
           onPress={handleSubmit}
