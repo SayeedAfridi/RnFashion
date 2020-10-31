@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react'
-import { Dimensions, Image, StyleSheet, ScrollView } from 'react-native'
+import { Dimensions, Image, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Box } from './theme'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 interface ContainerProps {
   children: ReactNode
@@ -21,7 +22,7 @@ const Conainer: React.FC<ContainerProps> = ({
 }: ContainerProps) => {
   const insets = useSafeAreaInsets()
   return (
-    <ScrollView>
+    <KeyboardAwareScrollView>
       <Box height={s} flex={1} backgroundColor='secondary'>
         <Box backgroundColor='white'>
           <Box
@@ -63,7 +64,7 @@ const Conainer: React.FC<ContainerProps> = ({
           {footer}
         </Box>
       </Box>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   )
 }
 
