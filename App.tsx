@@ -5,6 +5,11 @@ import { AuthenticationNavigator } from './src/Authentication'
 import { ThemeProvider } from '@shopify/restyle'
 import { theme } from './src/components'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { createStackNavigator } from '@react-navigation/stack'
+import { HomeNavigator } from './src/Home'
+import { AppRoutes } from './src/components/Navigation'
+
+const AppStack = createStackNavigator<AppRoutes>()
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -15,7 +20,13 @@ const App: React.FC = () => {
     <ThemeProvider {...{ theme }}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <AuthenticationNavigator />
+          <AppStack.Navigator headerMode='none'>
+            <AppStack.Screen
+              name='Authentication'
+              component={AuthenticationNavigator}
+            />
+            <AppStack.Screen name='Home' component={HomeNavigator} />
+          </AppStack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
     </ThemeProvider>

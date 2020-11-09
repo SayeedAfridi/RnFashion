@@ -7,10 +7,14 @@ export interface RoundedIconProps {
   color: keyof Theme['colors']
   backgroundColor: keyof Theme['colors']
   size: number
+  iconRatio?: number
 }
 
-const RoundedIcon: React.FC<RoundedIconProps> = (props: RoundedIconProps) => {
-  const iconSize = props.size * 0.6
+const RoundedIcon: React.FC<RoundedIconProps> = ({
+  iconRatio = 0.6,
+  ...props
+}: RoundedIconProps) => {
+  const iconSize = props.size * iconRatio
   return (
     <Box
       backgroundColor={props.backgroundColor}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, useTheme, Text, Button, LinkButton } from '../components'
 import { Image, Dimensions } from 'react-native'
-import { Routes, StackNavigationProps } from '../components/Navigation'
+import { AuthNavigationProps } from '../components/Navigation'
 
 const { width } = Dimensions.get('window')
 
@@ -11,7 +11,7 @@ const image = {
   height: 575,
 }
 
-const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
+const Welcome = ({ navigation }: AuthNavigationProps<'Welcome'>) => {
   const theme = useTheme()
   const BORDER_RADIUS = theme.borderRadii.xl
   return (

@@ -12,8 +12,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Footer from './components/Footer'
 import { TextInputRef } from '../components/Form/TextInput'
-import { Routes, StackNavigationProps } from '../components/Navigation'
-
+import { AuthNavigationProps } from '../components/Navigation'
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
@@ -21,7 +20,7 @@ const LoginSchema = Yup.object().shape({
     .required('Required'),
 })
 
-const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
+const Login = ({ navigation }: AuthNavigationProps<'Login'>) => {
   const password = useRef<TextInputRef>(null)
   const {
     handleChange,
@@ -34,7 +33,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, 'Login'>) => {
   } = useFormik({
     initialValues: { email: '', password: '', remember: false },
     validationSchema: LoginSchema,
-    onSubmit: (val) => console.log(val),
+    onSubmit: () => navigation.navigate('Home'),
   })
   const footer = (
     <Footer

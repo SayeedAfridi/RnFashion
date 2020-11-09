@@ -4,14 +4,13 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Footer from './components/Footer'
 import { Linking } from 'react-native'
-import { Routes, StackNavigationProps } from '../components/Navigation'
+import { AuthNavigationProps } from '../components/Navigation'
+
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 })
 
-const ForgotPassword = ({
-  navigation,
-}: StackNavigationProps<Routes, 'Login'>) => {
+const ForgotPassword = ({ navigation }: AuthNavigationProps<'Login'>) => {
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(
     {
       initialValues: { email: '' },

@@ -6,11 +6,9 @@ import {
   RoundedIcon,
   RoundedIconButton,
 } from '../components'
-import { Routes, StackNavigationProps } from '../components/Navigation'
+import { AuthNavigationProps } from '../components/Navigation'
 
-const PasswordChanged = ({
-  navigation,
-}: StackNavigationProps<Routes, 'Login'>) => {
+const PasswordChanged = ({ navigation }: AuthNavigationProps<'Login'>) => {
   return (
     <Container
       footer={

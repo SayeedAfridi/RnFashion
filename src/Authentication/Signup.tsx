@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Footer from './components/Footer'
 import { TextInputRef } from '../components/Form/TextInput'
-import { Routes, StackNavigationProps } from '../components/Navigation'
+import { AuthNavigationProps } from '../components/Navigation'
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -16,7 +16,7 @@ const SignupSchema = Yup.object().shape({
     .required('Required'),
 })
 
-const Signup = ({ navigation }: StackNavigationProps<Routes, 'Signup'>) => {
+const Signup = ({ navigation }: AuthNavigationProps<'Signup'>) => {
   const password = useRef<TextInputRef>(null)
   const passwordConfirm = useRef<TextInputRef>(null)
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(

@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import SubSlide from './SubSlide'
 import Dot from './Dot'
-import { Routes, StackNavigationProps } from '../../components/Navigation'
+import { AuthNavigationProps } from '../../components/Navigation'
 import { Theme, useTheme, makeStyles } from '../../components/theme'
 
 const { width } = Dimensions.get('window')
@@ -66,9 +66,7 @@ const slides = [
   },
 ]
 
-const Onboarding = ({
-  navigation,
-}: StackNavigationProps<Routes, 'Onboarding'>) => {
+const Onboarding = ({ navigation }: AuthNavigationProps<'Onboarding'>) => {
   const theme = useTheme()
   const styles = useStyles()
   const scrl = useRef<Animated.ScrollView>(null)

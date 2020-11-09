@@ -17,6 +17,10 @@ const theme = createTheme({
     lightGrey: '#f4f0ef',
     danger: '#ff0058',
     primaryLight: '#e7f9f7',
+    orange: 'orange',
+    yellow: '#f3c92e',
+    pink: 'pink',
+    violet: 'violet',
   },
   spacing: {
     s: 8,
