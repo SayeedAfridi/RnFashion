@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Text } from '../theme'
 import Icon from 'react-native-vector-icons/Feather'
-import { RectButton } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native'
 import { useTheme } from '@shopify/restyle'
 
 interface CheckboxProps {
@@ -17,7 +17,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }: CheckboxProps) => {
   const theme = useTheme()
   return (
-    <RectButton activeOpacity={0} onPress={() => onChange(!checked)}>
+    <TouchableOpacity activeOpacity={0.9} onPress={() => onChange(!checked)}>
       <Box flexDirection='row' alignItems='center'>
         <Box
           borderColor={checked ? 'primary' : 'darkGrey'}
@@ -30,14 +30,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
           marginRight='s'
           backgroundColor={checked ? 'primary' : 'white'}>
           <Icon
-            name='check'
+            name={checked ? 'check' : 'x'}
             color={checked ? 'white' : theme.colors.darkGrey}
             size={16}
           />
         </Box>
         <Text variant='button'>{label}</Text>
       </Box>
-    </RectButton>
+    </TouchableOpacity>
   )
 }
 

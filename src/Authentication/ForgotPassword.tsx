@@ -4,23 +4,26 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Footer from './components/Footer'
 import { Linking } from 'react-native'
+import { Routes, StackNavigationProps } from '../components/Navigation'
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 })
 
-const ForgotPassword = () => {
+const ForgotPassword = ({
+  navigation,
+}: StackNavigationProps<Routes, 'Login'>) => {
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik(
     {
       initialValues: { email: '' },
       validationSchema: ForgotPasswordSchema,
-      onSubmit: (val) => console.log(val),
+      onSubmit: () => navigation.navigate('PasswordChanged'),
     },
   )
   const footer = (
     <Footer
       title="Don't work?"
       action='Try another way.'
-      onPress={() => Linking.openURL('https://google.com')}
+      onPress={() => Linking.openURL('mailto: as.afridi563@gmail.com')}
     />
   )
   return (

@@ -8,6 +8,7 @@ import Welcome from './Welcome'
 import Login from './Login'
 import Signup from './Signup'
 import ForgotPassword from './ForgotPassword'
+import PasswordChanged from './PasswordChanged'
 import { Routes } from '../components/Navigation'
 
 const AuthenticationStack = createStackNavigator<Routes>()
@@ -27,6 +28,10 @@ export const AuthenticationNavigator: React.FC = () => (
     <AuthenticationStack.Screen
       name='ForgotPassword'
       component={ForgotPassword}
+    />
+    <AuthenticationStack.Screen
+      name='PasswordChanged'
+      component={PasswordChanged}
     />
   </AuthenticationStack.Navigator>
 )

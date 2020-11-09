@@ -16,6 +16,7 @@ const theme = createTheme({
     white: 'white',
     lightGrey: '#f4f0ef',
     danger: '#ff0058',
+    primaryLight: '#e7f9f7',
   },
   spacing: {
     s: 8,
