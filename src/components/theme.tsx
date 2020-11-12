@@ -21,6 +21,7 @@ const theme = createTheme({
     yellow: '#f3c92e',
     pink: 'pink',
     violet: 'violet',
+    lightBlue: '#bfeaf5',
   },
   spacing: {
     s: 8,

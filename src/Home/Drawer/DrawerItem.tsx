@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { RoundedIcon, Box, Text } from '../../components'
@@ -11,8 +12,11 @@ export interface DrawerItemProps {
 }
 
 const DrawerItem = (props: DrawerItemProps) => {
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity activeOpacity={0.8}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate(props.screen)}>
       <Box flexDirection='row' alignItems='center' padding='s'>
         <RoundedIcon
           size={32}

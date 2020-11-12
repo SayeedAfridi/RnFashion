@@ -20,7 +20,7 @@ const App: React.FC = () => {
     <ThemeProvider {...{ theme }}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <AppStack.Navigator headerMode='none'>
+          <AppStack.Navigator initialRouteName='Home' headerMode='none'>
             <AppStack.Screen
               name='Authentication'
               component={AuthenticationNavigator}

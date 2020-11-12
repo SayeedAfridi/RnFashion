@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Text, Header } from '../../components'
 import { Dimensions } from 'react-native'
 import DrawerItem, { DrawerItemProps } from './DrawerItem'
+import { HomeNavigationProps } from '../../components/Navigation'
 
 const { width } = Dimensions.get('window')
 export const DRAWER_WIDTH = width * 0.8
@@ -49,7 +50,7 @@ const items: DrawerItemProps[] = [
   },
 ]
 
-const MyDrawer = () => {
+const MyDrawer = ({ navigation }: HomeNavigationProps<'OutfitIdeas'>) => {
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor='white'>
@@ -63,7 +64,10 @@ const MyDrawer = () => {
           backgroundColor='secondary'
         />
         <Header
-          left={{ icon: 'x', onPress: () => true }}
+          left={{
+            icon: 'x',
+            onPress: () => navigation.closeDrawer(),
+          }}
           title='menu'
           right={{ icon: 'shopping-bag', onPress: () => true }}
           dark
