@@ -44,66 +44,62 @@ const Login = ({ navigation }: AuthNavigationProps<'Login'>) => {
   )
   return (
     <Container footer={footer}>
-      <Box padding='xl' paddingBottom='s'>
-        <Text variant='title1' textAlign='center'>
-          Welcome Back!
-        </Text>
-        <Text variant='body' textAlign='center'>
-          Use your credentials below and login to your account.
-        </Text>
-      </Box>
-      <Box alignItems='center' justifyContent='center' padding='m'>
-        <TextInput
-          onChangeText={handleChange('email')}
-          icon='mail'
-          onBlur={handleBlur('email')}
-          placeholder='Enter your Email'
-          error={errors.email}
-          touched={touched.email}
-          autoCompleteType='email'
-          keyboardType='email-address'
-          autoCapitalize='none'
-          returnKeyType='next'
-          returnKeyLabel='Next'
-          onSubmitEditing={() => password.current?.focus()}
+      <Text variant='title1' textAlign='center'>
+        Welcome Back!
+      </Text>
+      <Text variant='body' textAlign='center'>
+        Use your credentials below and login to your account.
+      </Text>
+      <TextInput
+        onChangeText={handleChange('email')}
+        icon='mail'
+        onBlur={handleBlur('email')}
+        placeholder='Enter your Email'
+        error={errors.email}
+        touched={touched.email}
+        autoCompleteType='email'
+        keyboardType='email-address'
+        autoCapitalize='none'
+        returnKeyType='next'
+        returnKeyLabel='Next'
+        onSubmitEditing={() => password.current?.focus()}
+      />
+      <TextInput
+        ref={password}
+        onChangeText={handleChange('password')}
+        onBlur={handleBlur('password')}
+        secureTextEntry={true}
+        icon='lock'
+        placeholder='Enter your Password'
+        error={errors.password}
+        touched={touched.password}
+        autoCapitalize='none'
+        returnKeyType='go'
+        returnKeyLabel='go'
+        onSubmitEditing={() => handleSubmit()}
+      />
+      <Box
+        flexDirection='row'
+        justifyContent='space-between'
+        paddingVertical='m'
+        width={'100%'}
+        alignItems='center'>
+        <Checkbox
+          checked={values.remember}
+          onChange={(v) => setFieldValue('remember', v)}
+          label='Remember me'
         />
-        <TextInput
-          ref={password}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
-          secureTextEntry={true}
-          icon='lock'
-          placeholder='Enter your Password'
-          error={errors.password}
-          touched={touched.password}
-          autoCapitalize='none'
-          returnKeyType='go'
-          returnKeyLabel='go'
-          onSubmitEditing={() => handleSubmit()}
-        />
-        <Box
-          flexDirection='row'
-          justifyContent='space-between'
-          paddingVertical='m'
-          width={'100%'}
-          alignItems='center'>
-          <Checkbox
-            checked={values.remember}
-            onChange={(v) => setFieldValue('remember', v)}
-            label='Remember me'
-          />
-          <LinkButton
-            onPress={() => navigation.navigate('ForgotPassword')}
-            label='Forgot Password?'
-            color='primary'
-          />
-        </Box>
-        <Button
-          onPress={handleSubmit}
-          variant='primary'
-          label='Log into your account'
+        <LinkButton
+          onPress={() => navigation.navigate('ForgotPassword')}
+          label='Forgot Password?'
+          color='primary'
         />
       </Box>
+      <Button
+        onPress={handleSubmit}
+        variant='primary'
+        label='Log into your account'
+      />
     </Container>
   )
 }

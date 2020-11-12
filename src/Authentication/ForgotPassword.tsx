@@ -27,36 +27,28 @@ const ForgotPassword = ({ navigation }: AuthNavigationProps<'Login'>) => {
   )
   return (
     <Container footer={footer}>
-      <Box padding='xl' paddingBottom='s'>
-        <Text variant='title1' textAlign='center'>
-          Forgot Password?
-        </Text>
-        <Text variant='body' textAlign='center'>
-          Enter the email address associated with your account.
-        </Text>
-      </Box>
-      <Box alignItems='center' justifyContent='center' padding='m'>
-        <TextInput
-          onChangeText={handleChange('email')}
-          icon='mail'
-          onBlur={handleBlur('email')}
-          placeholder='Enter your Email'
-          error={errors.email}
-          touched={touched.email}
-          autoCompleteType='email'
-          keyboardType='email-address'
-          autoCapitalize='none'
-          returnKeyType='go'
-          returnKeyLabel='Go'
-          onSubmitEditing={() => handleSubmit()}
-        />
-        <Box height={10} />
-        <Button
-          onPress={handleSubmit}
-          variant='primary'
-          label='Reset password'
-        />
-      </Box>
+      <Text variant='title1' textAlign='center'>
+        Forgot Password?
+      </Text>
+      <Text variant='body' textAlign='center'>
+        Enter the email address associated with your account.
+      </Text>
+      <TextInput
+        onChangeText={handleChange('email')}
+        icon='mail'
+        onBlur={handleBlur('email')}
+        placeholder='Enter your Email'
+        error={errors.email}
+        touched={touched.email}
+        autoCompleteType='email'
+        keyboardType='email-address'
+        autoCapitalize='none'
+        returnKeyType='go'
+        returnKeyLabel='Go'
+        onSubmitEditing={() => handleSubmit()}
+      />
+      <Box height={10} />
+      <Button onPress={handleSubmit} variant='primary' label='Reset password' />
     </Container>
   )
 }

@@ -53,7 +53,10 @@ const Conainer: React.FC<ContainerProps> = ({
             flex={1}
             backgroundColor='white'
             borderRadius='xl'
-            borderTopLeftRadius='none'>
+            borderTopLeftRadius='none'
+            justifyContent='center'
+            padding='l'
+            alignItems='center'>
             {children}
           </Box>
         </Box>

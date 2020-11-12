@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, RoundedIconButton, Text } from '../../components'
-import { Dimensions, Image, StyleSheet } from 'react-native'
+import { Dimensions } from 'react-native'
 import DrawerItem, { DrawerItemProps } from './DrawerItem'
 
 const { width } = Dimensions.get('window')
@@ -8,8 +8,7 @@ export const DRAWER_WIDTH = width * 0.8
 
 const aspectRatio = 2400 / 3200
 const height = DRAWER_WIDTH * aspectRatio
-const patterns = [require('../../assets/paterns/1.png')]
-const BOX_HEIGHT = height * 0.3
+const BOX_HEIGHT = height * 0.4
 
 const items: DrawerItemProps[] = [
   {
@@ -90,18 +89,6 @@ const MyDrawer = () => {
       </Box>
       <Box flex={0.8}>
         <Box flex={1} backgroundColor='secondary' />
-        <Box flex={1} backgroundColor='primaryLight' />
-        <Image
-          source={patterns[0]}
-          style={{
-            position: 'absolute',
-            width: DRAWER_WIDTH,
-            left: 0,
-            right: 0,
-            bottom: -BOX_HEIGHT,
-            height,
-          }}
-        />
         <Box
           position='absolute'
           top={0}
@@ -143,16 +130,9 @@ const MyDrawer = () => {
         height={BOX_HEIGHT}
         overflow='hidden'
         width={DRAWER_WIDTH}
-        backgroundColor='white'>
-        <Image
-          source={patterns[0]}
-          style={{
-            ...StyleSheet.absoluteFillObject,
-            width: DRAWER_WIDTH,
-            height,
-          }}
-        />
-      </Box>
+        borderTopLeftRadius='xl'
+        backgroundColor='secondary'
+      />
     </Box>
   )
 }

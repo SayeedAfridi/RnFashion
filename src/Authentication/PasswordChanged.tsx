@@ -22,20 +22,18 @@ const PasswordChanged = ({ navigation }: AuthNavigationProps<'Login'>) => {
           />
         </Box>
       }>
-      <Box flex={1} padding='l' justifyContent='center' alignItems='center'>
-        <RoundedIcon
-          backgroundColor='primaryLight'
-          color='primary'
-          size={80}
-          name='check'
-        />
-        <Text variant='title1' textAlign='center' marginVertical='l'>
-          Your password was successfully changed!
-        </Text>
-        <Text variant='body' textAlign='center'>
-          Close the window and login again.
-        </Text>
-      </Box>
+      <RoundedIcon
+        backgroundColor='primaryLight'
+        color='primary'
+        size={80}
+        name='check'
+      />
+      <Text variant='title1' textAlign='center' marginVertical='l'>
+        Your password was successfully changed!
+      </Text>
+      <Text variant='body' textAlign='center'>
+        Close the window and login again.
+      </Text>
     </Container>
   )
 }
