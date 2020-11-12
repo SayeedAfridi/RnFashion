@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, RoundedIconButton, Text } from '../../components'
+import { Box, Text, Header } from '../../components'
 import { Dimensions } from 'react-native'
 import DrawerItem, { DrawerItemProps } from './DrawerItem'
 
@@ -62,30 +62,12 @@ const MyDrawer = () => {
           borderBottomRightRadius='xl'
           backgroundColor='secondary'
         />
-        <Box
-          flexDirection='row'
-          justifyContent='space-between'
-          alignItems='center'
-          paddingVertical='m'
-          paddingHorizontal='s'>
-          <RoundedIconButton
-            onPress={() => true}
-            name='x'
-            size={32}
-            color='white'
-            backgroundColor='secondary'
-            iconRatio={0.6}
-          />
-          <Text color='white'>MY PROFILE</Text>
-          <RoundedIconButton
-            onPress={() => true}
-            name='shopping-bag'
-            size={32}
-            color='white'
-            iconRatio={0.6}
-            backgroundColor='secondary'
-          />
-        </Box>
+        <Header
+          left={{ icon: 'x', onPress: () => true }}
+          title='menu'
+          right={{ icon: 'shopping-bag', onPress: () => true }}
+          dark
+        />
       </Box>
       <Box flex={0.8}>
         <Box flex={1} backgroundColor='secondary' />

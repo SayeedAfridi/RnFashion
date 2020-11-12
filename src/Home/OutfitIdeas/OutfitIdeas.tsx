@@ -1,11 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-
+import { Box, Header } from '../../components'
 const OutfitIdeas = () => {
   return (
-    <View>
-      <Text>Hello</Text>
-    </View>
+    <Box flex={1} backgroundColor='white'>
+      <Header
+        left={{ icon: 'menu', onPress: () => true }}
+        title='outfit ideas'
+        right={{ icon: 'shopping-bag', onPress: () => true }}
+      />
+    </Box>
   )
 }
 
